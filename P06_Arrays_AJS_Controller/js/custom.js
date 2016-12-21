@@ -13,6 +13,8 @@ $( document ).ready(function() {
     $( "#ex5btn" ).click(ex5);
     $( "#ex6btn" ).click(ex6);
     $( "#ex7btn" ).click(ex7);
+    $( "#ex8btn" ).click(ex8);
+    $( "#ex9btn" ).click(ex9);
 });
 
 //Tool
@@ -82,20 +84,39 @@ function ex7(){
 
     console.log("Ex7:");
 
-    var total;
-    var signo = $( "#ex7in" ).val();
+    var total='';
 
-    switch (signo){
-        case "+":
-            for (var key in  lista_numeros) {
-                total = (total + lista_numeros[key]);
-            }
-            break;
-        default:
-            console.log("Signo mal introducido");
-            break;
+    for (var key in  lista_numeros.reverse()) {
+
+        total += lista_numeros[key] + $( "#ex7in" ).val() + lista_numeros[key];
+
     }
+    total = eval(total);
 
     $( "#ex7" ).append("<div class='col-lg-12'><b>Total: </b>" + total + "</div>");
+
+}
+function ex8(){
+
+    console.log("Ex8:");
+
+    delete lista_numeros[$( "#ex8in" ).val()];
+
+    mostarNumeros(8);
+}
+
+function ex9() {
+
+    console.log("Ex9:");
+
+    for (var key in lista_numeros.reverse()){
+
+        if ($( "#ex9in" ).val() == lista_numeros[key]){
+            delete lista_numeros[key];
+        }
+
+    }
+
+    mostarNumeros(9);
 
 }
