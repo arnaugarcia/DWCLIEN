@@ -1,0 +1,10 @@
+.ng-binding{
+    text-align: center;
+    border: 1px solid #ddd;
+    width: 8.33333333%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
