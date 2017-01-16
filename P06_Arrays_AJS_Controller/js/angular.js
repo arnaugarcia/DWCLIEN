@@ -10,4 +10,16 @@ var numeros = new Array(5);
     numeros[5]=5;
 angular.module('myApp',[]).controller('angular',['$scope',function($scope){
         $scope.numeros = numeros;
+
+        $scope.addNumFinal = function () {
+            $scope.numeros.push($scope.numFinal);
+        };
+
+        $scope.addNumInicial = function () {
+            $scope.numeros.shift($scope.numInicial);
+        }
+
+        $scope.numRemove = function () {
+            $scope.numeros.pop();
+        }
 }]);

@@ -1,9 +1,5 @@
 var lista_extras = ["ABS","Cierre centralizado","Turbo","Piloto automático","Faros LED"];
-
-function newLine(line) {
-    document.write("<br> " + line);
-}
-
+var concesionarios = [];
 function Coche(){
     this.nombre;
     this.precio;
@@ -15,7 +11,6 @@ function Coche(){
     this.getExtra = function(numExtra) {
         return this.extras[numExtra];
     }
-    
 
 }
 
@@ -35,18 +30,31 @@ function Concesionario() {
     }
 }
 
+/* Metodos Extras */
+function createNewCar(nombre,precio) {
+    var coche = new Coche();
+    coche.nombre = nombre;
+    coche.precio = precio;
+    var numExtra = coche.addExtra(lista_extras[randomNumber(0,lista_extras.length-1)]);
+    var extra = coche.getExtra(numExtra-1);
+    return coche;
+}
+
+function randomNumber(min,max) {
+    return Math.floor(Math.random() * max) + min;
+}
 /* Validación 1 */
     var coche = new Coche();
     coche.nombre = "Fantastico";
-    document.write("<br>Nombre Coche: ");
-    document.write(coche.nombre);
+    //document.write("<br>Nombre Coche: ");
+    //document.write(coche.nombre);
     coche.precio = "70000€";
-    document.write("<br> Precio Coche: ");
-    document.write(coche.precio);
+    //document.write("<br> Precio Coche: ");
+    //document.write(coche.precio);
     var numExtra = coche.addExtra("Airbag");
     var extra = coche.getExtra(numExtra-1);
-    document.write('<br/>Extra: ');
-    document.write(extra);
+    //document.write('<br/>Extra: ');
+    //document.write(extra);
 
 /* Validación 2 */
     var myConcesionario = new Concesionario();
@@ -57,14 +65,66 @@ function Concesionario() {
     coche.precio = "70000€";
     var numExtra = coche.addExtra("Airbag");
     var extra = coche.getExtra(numExtra-1);
+
     var posicionPedido = myConcesionario.addComanda(coche);
-    document.write("<br> Nombre concesionario: ");
-    document.write(myConcesionario.nombre);
-    document.write("<br> Dirección concesionario: ");
-    document.write(myConcesionario.direction);
-    document.write("<br> Nombre Coche: ");
-    document.write(myConcesionario.pedidos[posicionPedido-1].nombre);
-    document.write("<br> Nombre Extra: ");
-    document.write(myConcesionario.pedidos[posicionPedido-1].extras[numExtra-1]);
+    //document.write("<br> Nombre concesionario: ");
+    //document.write(myConcesionario.nombre);
+    //document.write("<br> Dirección concesionario: ");
+    //document.write(myConcesionario.direction);
+    //document.write("<br> Nombre Coche: ");
+    //document.write(myConcesionario.pedidos[posicionPedido-1].nombre);
+    //document.write("<br> Nombre Extra: ");
+    //document.write(myConcesionario.pedidos[posicionPedido-1].extras[numExtra-1]);
+
+
+/* Validación 3 */
+    var concesionario1 = new Concesionario();
+    concesionario1.setNombre("Concesionario1");
+    concesionario1.setDireccion("C/ calle 1");
+    concesionario1.addComanda(createNewCar("Seat Ibiza",3000));
+    concesionario1.addComanda(createNewCar("Tesla Model S", 150000));
+    concesionario1.addComanda(createNewCar("Lamborghini Aventador", 200000));
+    concesionario1.addComanda(createNewCar("Lamborghini Veneno", 2000000));
+
+    /*Añadir objetos al array*/
+    concesionarios.push(myConcesionario);
+    concesionarios.push(concesionario1);
+
+    /*Mostramos Objetos en el DOM*/
+$( document ).ready(function() {
+    for (id in concesionarios){
+        $("#sel1").append("<option value='" + id + "'> " + concesionarios[id].nombre + " ");
+        writeCar($("#sel1").val());
+    }
+});
+
+function writeCar(id) {
+    for (i in concesionarios[id].pedidos) {
+        $("#write").append("<tr>" + "<th>" + i + "</th>" + "<td>" + concesionarios[id].pedidos[i].nombre +  "</td>" + "<td>" + concesionarios[id].pedidos[i].precio +  "€</td>" + "<td>" + showExtras(concesionarios[id].pedidos[i].extras) +  "</td>" + "</tr>");
+
+    }
+   /* <tr>
+    <th>1</th>
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>@mdo</td>
+    </tr>
+    */
+}
+
+function changeValues() {
+    $("#write").empty();
+    writeCar($("#sel1").val());
+}
+
+function showExtras(extras) {
+    var result;
+    for (i in extras){
+        result += extras[i];
+    }
+    console.log(extras[i]);
+    return result;
+}
+
 
 

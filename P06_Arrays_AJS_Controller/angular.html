@@ -12,18 +12,33 @@
 </head>
 <body ng-app="myApp">
 
-<div class="container">
+<div class="container" ng-controller="angular">
     <h3>Exercici 1</h3>
-    <div ng-controller="ex1" class="row">
+    <div class="row">
         <div ng-repeat="numero in numeros track by $index">
             {{numero}}
         </div>
     </div>
     <h3>Exercici 2</h3>
-    <div ng-controller="ex2" class="row">
-        <div ng-repeat="numero in numeros1 track by $index">
-            {{numero}}
-        </div>
+    <div class="row">
+        Primer número {{numeros[0]}}
+        último número {{numeros[numeros.length-1]}}
+    </div>
+    <h3>Exercici 3</h3>
+    <div class="row">
+        <input type="text" ng-model="numFinal"/>
+        <button class="btn btn-default" ng-click="addNumFinal();">Add num final</button>
+    </div>
+    <h3>Exercici 4</h3>
+    <div class="row">
+        <input type="text" ng-model="numInicial"/>
+        <button class="btn btn-default" ng-click="addNumInicial();">Add num Inicial</button>
+    </div>
+
+    <h3>Exercici 5</h3>
+    <div class="row">
+        <input type="text" ng-model="numRemove"/>
+        <button class="btn btn-default" ng-click="numRemove();">Elimina últim numero</button>
     </div>
 </div>
 
