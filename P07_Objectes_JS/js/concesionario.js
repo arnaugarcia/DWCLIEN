@@ -48,7 +48,7 @@ function randomNumber(min,max) {
     coche.nombre = "Fantastico";
     //document.write("<br>Nombre Coche: ");
     //document.write(coche.nombre);
-    coche.precio = "70000€";
+    coche.precio = "70000";
     //document.write("<br> Precio Coche: ");
     //document.write(coche.precio);
     var numExtra = coche.addExtra("Airbag");
@@ -62,7 +62,7 @@ function randomNumber(min,max) {
     myConcesionario.setDireccion("c/ Mushroom Kingdom 1");
     var coche = new Coche();
     coche.nombre = "Fantastico";
-    coche.precio = "70000€";
+    coche.precio = "70000";
     var numExtra = coche.addExtra("Airbag");
     var extra = coche.getExtra(numExtra-1);
 
@@ -86,9 +86,18 @@ function randomNumber(min,max) {
     concesionario1.addComanda(createNewCar("Lamborghini Aventador", 200000));
     concesionario1.addComanda(createNewCar("Lamborghini Veneno", 2000000));
 
+    var concesionario2 = new Concesionario();
+    concesionario2.setNombre("Concesionario2");
+    concesionario2.setDireccion("C/ calle 2");
+    concesionario2.addComanda(createNewCar("Seat Leon",3000));
+    concesionario2.addComanda(createNewCar("Tesla Model X", 170000));
+    concesionario2.addComanda(createNewCar("Lamborghini Aventador Roadster", 300000));
+    concesionario2.addComanda(createNewCar("Lamborghini Veneno Roadster", 2005000));
+
     /*Añadir objetos al array*/
     concesionarios.push(myConcesionario);
     concesionarios.push(concesionario1);
+    concesionarios.push(concesionario2);
 
     /*Mostramos Objetos en el DOM*/
 $( document ).ready(function() {
@@ -103,13 +112,7 @@ function writeCar(id) {
         $("#write").append("<tr>" + "<th>" + i + "</th>" + "<td>" + concesionarios[id].pedidos[i].nombre +  "</td>" + "<td>" + concesionarios[id].pedidos[i].precio +  "€</td>" + "<td>" + showExtras(concesionarios[id].pedidos[i].extras) +  "</td>" + "</tr>");
 
     }
-   /* <tr>
-    <th>1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-    </tr>
-    */
+    
 }
 
 function changeValues() {
@@ -118,11 +121,10 @@ function changeValues() {
 }
 
 function showExtras(extras) {
-    var result;
+    var result='';
     for (i in extras){
         result += extras[i];
     }
-    console.log(extras[i]);
     return result;
 }
 
