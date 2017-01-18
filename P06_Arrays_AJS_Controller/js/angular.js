@@ -59,7 +59,13 @@ angular.module('myApp',[]).controller('angular',['$scope',function($scope){
 
         //ex9
         $scope.delNum = function () {
-            
+            for (var key in numeros.reverse()){
+
+                if ($scope.inputDelNum == numeros[key]){
+                    delete numeros[key];
+                }
+
+            }
         }
 
 }]);
