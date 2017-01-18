@@ -37,10 +37,40 @@
 
     <h3>Exercici 5</h3>
     <div class="row">
-        <input type="text" ng-model="numRemove"/>
-        <button class="btn btn-default" ng-click="numRemove();">Elimina últim numero</button>
+        <button class="btn btn-default" ng-click="numRemove();">Elimina últim número</button>
+    </div>
+
+    <h3>Exercici 6</h3>
+    <div class="row">
+        <button class="btn btn-default" ng-click="numFirstRemove();">Borrar primer número</button>
+    </div>
+    <h3>Exercici 7</h3>
+    <div class="row">
+        <input type="text" ng-model="simCalcular"/>
+        <button class="btn btn-default" ng-click="calcular();">Calcular signe</button>
+        <br>
+        Resultat: <label>{{result}}</label>
+    </div>
+    <h3>Exercici 8</h3>
+    <div class="row">
+        <input type="text" ng-model="inputDelPos"/>
+        <button class="btn btn-default" ng-click="delPos();">Eliminar posició concreta</button>
+        <br>
+        <div ng-repeat="numero in numeros track by $index">
+            {{numero}}
+        </div>
+    </div>
+    <h3>Exercici 9</h3>
+    <div class="row">
+        <input type="text" ng-model="inputDelNum"/>
+        <button class="btn btn-default" ng-click="delNum();">Eliminar Número</button>
+        <br>
+        <div ng-repeat="numero in numeros track by $index">
+            {{numero}}
+        </div>
     </div>
 </div>
+
 
 </body>
 </html>

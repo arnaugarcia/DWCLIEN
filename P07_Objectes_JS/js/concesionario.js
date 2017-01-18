@@ -112,7 +112,7 @@ function writeCar(id) {
         $("#write").append("<tr>" + "<th>" + i + "</th>" + "<td>" + concesionarios[id].pedidos[i].nombre +  "</td>" + "<td>" + concesionarios[id].pedidos[i].precio +  "€</td>" + "<td>" + showExtras(concesionarios[id].pedidos[i].extras) +  "</td>" + "</tr>");
 
     }
-    
+
 }
 
 function changeValues() {
