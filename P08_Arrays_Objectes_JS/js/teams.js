@@ -1,11 +1,10 @@
-var list_equipos = [];
 var list_players = [];
 function Team(name, win, loss, type, players){
-    this.name;
-    this.win;
-    this.loss;
-    this.type;
-    this.players=[];
+    this.name = name;
+    this.win = win;
+    this.loss = loss;
+    this.type = type;
+    this.players = players||{};
 
     this.addPlayer = function (nickname, name, principal, score) {
         return this.players[nickname] = new Player(nickname, name, principal, score);
@@ -31,24 +30,62 @@ function Team(name, win, loss, type, players){
        return this.getPlayer(nickname);
     };
 
+    this.showTeam = function () {
+        document.write("Nom Equip: " + this.name + "</br>");
+        document.write("Victories: " + this.win + "</br>");
+        document.write("Derrotes: " + this.loss + "</br>");
+        document.write("Tipus: " + this.type + "</br>");
+
+        for (var key in this.players){
+            this.players[key].showPlayer();
+        }
+    };
+
 }
 function Player(nickname,name,principal,score){
     this.nickname = nickname;
     this.name = name;
     this.principal = principal;
     this.score = score;
+
+    this.updatePlayer = function(name,principal,score){
+        this.name = name || this.name;
+        this.principal = principal || this.principal;
+        this.score = score || this.score;
+    };
+
+    this.showPlayer = function () {
+        document.write("</br>");
+        document.write("Nom del jugador: " + this.name + "</br>");
+        document.write("Nickname: " + this.nickname + "</br>");
+        document.write("Prinicipal: " + this.principal + "</br>");
+        document.write("Score: " + this.score + "</br>");
+        document.write("</br>");
+    }
 }
 
 window.addEventListener("load",inicio);
 function inicio() {
-    var player1 = new Player("will1","Will es Milf1","Alero",100);
-    var player2 = new Player("will2","Will es Milf2","Alero",200);
-    var player3 = new Player("will3","Will es Milf3","Alero",300);
-    list_players.push(player1);
-    list_players.push(player2);
-    list_players.push(player3);
+    var player1 = new Player("will1","Will es Milf1","Jungle",100);
+    var player2 = new Player("will2","Will es Milf2","Top",200);
+    var player3 = new Player("will3","Will es Milf3","Mid",300);
+    var player4 = new Player("will4","Will es Milf4","Support",400);
+    list_players[player1.nickname] = player1;
+    list_players[player2.nickname] = player2;
+    list_players[player3.nickname] = player3;
+    list_players[player4.nickname] = player4;
     var team = new Team("leyendas",0,1,"Test",list_players);
-    document.write(team.getPlayerMaxPunts().name);
+
+    //Validacions
+    team.showTeam();
+
+    document.write("Conseguir jugador per nickname (will2) " + "</br>");
+    team.getPlayer("will2").showPlayer();
+
+    document.write("Modificar jugador (will2) amb els següents parámetres ('Cristian', 'Jugador', '500')");
+    team.getPlayer("will2").updatePlayer("Cristian","Jugador",500);
+    team.getPlayer("will2").showPlayer();
+
 
 
 }
