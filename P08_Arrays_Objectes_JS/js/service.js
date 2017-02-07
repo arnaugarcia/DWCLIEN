@@ -1,6 +1,3 @@
-/**
- * Created by Arnau on 01/02/17.
- */
 app.service("serv", function () {
 
     this.teamList = [];
@@ -14,7 +11,7 @@ app.service("serv", function () {
 //Para insertar jugadores:
 //jugadores = []
 //jugadores[jugador.nick] = jugador
-//Para que el nick se asocie al objeto =>
+//Para que el nick se asocie al objeto => 
 
 
 function Player(name, nickname, position, points) {
@@ -72,7 +69,6 @@ function Team(name, victories, defeats, type) {
     this.getPlayer = function (nick) {
 
         return this.players[nick];
-
 
     };
 
