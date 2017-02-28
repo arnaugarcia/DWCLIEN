@@ -1,10 +1,12 @@
-var list_players = [];
+var list_teams = [];
+
 function Team(name, win, loss, type, players){
     this.name = name;
     this.win = win;
     this.loss = loss;
     this.type = type;
     this.players = players||{};
+    this.championship = [];
 
     this.addPlayer = function (nickname, name, principal, score) {
         return this.players[nickname] = new Player(nickname, name, principal, score);
@@ -30,6 +32,20 @@ function Team(name, win, loss, type, players){
        return this.getPlayer(nickname);
     };
 
+    this.addChampionship = function (year, position) {
+        var championship = new Championship(year,position);
+        this.championship.push(championship);
+    };
+
+    this.firstLast = function () {
+        this.championship.push(this.championship[0]);
+        this.championship.splice(0,1);
+    };
+
+    this.remCampionat = function (year) {
+        this.championship.splice(this.championship.indexOf(year));
+    };
+
     this.showTeam = function () {
         document.write("Nom Equip: " + this.name + "</br>");
         document.write("Victories: " + this.win + "</br>");
@@ -40,6 +56,12 @@ function Team(name, win, loss, type, players){
             this.players[key].showPlayer();
         }
     };
+    
+    this.showChampionship = function () {
+        for (var i = 0; i<this.championship.length; i++){
+            document.getElementById("infoCampionats").innerHTML += "Any: " + this.championship[i].year + " Posició" + this.championship[i].position + "<br>";
+        }
+    }
 
 }
 function Player(nickname,name,principal,score){
@@ -65,6 +87,7 @@ function Player(nickname,name,principal,score){
 }
 
 window.addEventListener("load",inicio);
+
 function inicio() {
     var player1 = new Player("will1","Will es Milf1","Jungle",100);
     var player2 = new Player("will2","Will es Milf2","Top",200);
@@ -76,6 +99,20 @@ function inicio() {
     list_players[player4.nickname] = player4;
     var team = new Team("leyendas",0,1,"Test",list_players);
 
+    team.addChampionship("2000","Test1");
+    team.addChampionship("1999","Test2");
+    team.addChampionship("1998","Test3");
+    team.addChampionship("1997","Test4");
+    team.addChampionship("2003","Test5");
+
+    team.showChampionship();
+
+    team.firstLast();
+
+    team.remCampionat("2003");
+
+    team.showChampionship();
+
     //Validacions
     team.showTeam();
 
@@ -86,6 +123,9 @@ function inicio() {
     team.getPlayer("will2").updatePlayer("Cristian","Jugador",500);
     team.getPlayer("will2").showPlayer();
 
+}
 
-
+function Championship(year, position){
+    this.year = year;
+    this.position = position;
 }

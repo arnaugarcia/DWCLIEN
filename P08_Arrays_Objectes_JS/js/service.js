@@ -7,18 +7,14 @@ app.service("serv", function () {
     };
 
 });
-//TODO
-//Para insertar jugadores:
-//jugadores = []
-//jugadores[jugador.nick] = jugador
-//Para que el nick se asocie al objeto => 
 
 
-function Player(name, nickname, position, points) {
+function Player(name, nickname, position, points, minutes) {
     this.name = name;
     this.nickname = nickname;
     this.position = position;
     this.points = points;
+    this.minutes = minutes;
 
     this.setName = function (name) {
         this.name = name;
@@ -32,7 +28,9 @@ function Player(name, nickname, position, points) {
     this.setPoints = function (points) {
         this.points = points;
     };
+
     this.updatePlayer = function (name, position, points) {
+
         this.name = name || this.name;
         this.position = position || this.position;
         this.points = points || this.points;
@@ -40,6 +38,7 @@ function Player(name, nickname, position, points) {
 }
 
 function Team(name, victories, defeats, type) {
+
     this.name = name;
     this.victories = victories;
     this.defeats = defeats;
@@ -81,18 +80,15 @@ function Team(name, victories, defeats, type) {
     };
 
     this.getPlayerMaxPunts = function () {
-        var max = 0;
-        var min = 99999999;
-        var lock = 0;
+        var x = 0;
+        var nickname;
         for (var key in this.players) {
-            if (this.players[key].points > max) {
-                lock = key;
-                max = this.players[key].points;
+            if (x < this.players[key].score){
+                x = this.players[key].score;
+                nickname = this.players[key].nickname;
             }
         }
-
-        return this.players[lock];
-
+        return this.getPlayer(nickname);
     };
 
 
