@@ -1,0 +1,10 @@
+.letra{
+    display:inline-block;
+    width: 30px;
+    border-bottom: 1px solid black;
+    margin-right: 5px;
+    vertical-align: top;
+    height: 30px;
+    text-align: center;
+    font-size:25px;
+}

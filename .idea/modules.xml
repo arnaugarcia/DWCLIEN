@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DWCLIEN.iml" filepath="$PROJECT_DIR$/DWCLIEN.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P13_SINTESIS/P13_SINTESIS.iml" filepath="$PROJECT_DIR$/P13_SINTESIS/P13_SINTESIS.iml" />
     </modules>
   </component>
 </project>
