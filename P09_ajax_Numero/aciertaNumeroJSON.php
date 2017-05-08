@@ -2,32 +2,16 @@
 
 session_start();
 
-$json = '{';
+$numeroAleatorio = rand(0, 1);
 
-if (isset($_GET['inicio'])) {     //se ha indicado iniciar un nuevo juego
-    $numeroAleatorio = rand(0, 10); //seleccionamos un numero aleatorio entre 0 y 10
-    $_SESSION['numeroOculto'] = $numeroAleatorio;
+$_SESSION['numeroOculto'] = $numeroAleatorio;
+
+$consulta = array(
+    ["url" => "img/ninos.jpg","pista" => "No todos son iguales", "pregunta" => "¿En que fila están los repetidos?","solucion_in" => "1 y 2", "solucion_co" => "3 y 4"],
+    ["url" => "img/trebol.jpg","pista" => "No todos son iguales", "pregunta" => "¿En que mitad está el trebol?","solucion_in" => "mitad arriba", "solucion_co" => "mitad abajo"]
+);
 
 
-    $json .= '"inicio":"' . $_SESSION['numeroOculto'] . '"';
-} else {
-    $numeroUsuario = $_GET['numero'];
-    $numeroOculto = $_SESSION['numeroOculto'];
-
-    if ($numeroUsuario > $numeroOculto) {
-        $json .= '"encontrado":"no",';
-        $json .= '"mensaje":"Has introducido un valor demasiado alto"';
-    } else {
-        if ($numeroUsuario < $numeroOculto) {
-            $json .= '"encontrado":"no",';
-            $json .= '"mensaje":"Has introducido un valor demasiado bajo"';
-        } else {
-            $json .= '"encontrado":"si",';
-            $json .= '"mensaje":"Exacto!"';
-        }
-    }
+if (isset($_GET['inicio'])) {
+    echo json_encode($consulta[0]);
 }
-
-$json .= '}';
-
-echo($json);
