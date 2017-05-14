@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DWCLIEN.iml" filepath="$PROJECT_DIR$/DWCLIEN.iml" />
       <module fileurl="file://$PROJECT_DIR$/P13_SINTESIS/P13_SINTESIS.iml" filepath="$PROJECT_DIR$/P13_SINTESIS/P13_SINTESIS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P15_Cookies_Window/P15_Cookies_Window.iml" filepath="$PROJECT_DIR$/P15_Cookies_Window/P15_Cookies_Window.iml" />
     </modules>
   </component>
 </project>
