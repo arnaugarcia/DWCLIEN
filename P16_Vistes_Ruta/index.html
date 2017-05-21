@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-    <div class="container">
 
-    </div>
-</body>
+</head>
+    <body ng-app="myApp">
+
+        <div ui-view="header"></div>
+
+        <div ui-view="content"></div>
+
+    </body>
     <script src="assets/js/vendor/jquery-3.1.1.js"></script>
     <script src="assets/js/vendor/tether.min.js"></script>
-    <script src="assets/js/vendor/bootstrap.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/angular.min.js"></script>
+    <script src="assets/js/vendor/angular-ui-router.min.js"></script>
+    <script src="app/app.js"></script>
+
+    <script src="app/layouts/header/header.controller.js"></script>
+    <script src="app/suscrito/suscrito.controller.js"></script>
+    <script src="app/home/home.controller.js"></script>
 </html>
