@@ -3,5 +3,5 @@
  */
 app.controller('SuscritoController', ['$scope',
     function ($scope) {
-        $scope.titol = "Suscrito Controller";
+        $scope.titlepage = "Listas suscrito";
     }]);

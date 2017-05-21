@@ -14,6 +14,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 'content': {
                     templateUrl: 'app/home/home.html',
                     controller: 'HomeController'
+                },
+                'footer': {
+                    templateUrl: 'app/layouts/footer/footer.html',
+                    controller: 'FooterController'
                 }
             }
         })
@@ -21,16 +25,35 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: 'suscritas',
             views: {
                 'content@': {
-                templateUrl: 'app/suscrito/suscrito.html',
+                templateUrl: 'app/views/suscrito/suscrito.html',
                 controller: 'SuscritoController'
                 }
             }
         })
-        .state('app.doscap', { url: 'doscap',
+        .state('app.buscar', {
+            url: 'buscar',
             views: {
                 'content@': {
-                    templateUrl: 'app/layouts/header/header.html',
-                    controller: 'HeaderController'
+                    templateUrl: 'app/views/buscar/buscar.html',
+                    controller: 'BuscarController'
+                }
+            }
+        })
+        .state('app.lista', {
+        url: 'lista/Lista de la compra',
+        views: {
+            'content@': {
+                templateUrl: 'app/views/lista/lista.html',
+                controller: 'ListaController'
+            }
+        }
+        })
+        .state('app.datos', {
+            url: 'misDatos',
+            views: {
+                'content@': {
+                    templateUrl: 'app/views/datos/datos.html',
+                    controller: 'DatosController'
                 }
             }
         });

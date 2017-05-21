@@ -11,7 +11,13 @@
 
         <div ui-view="header"></div>
 
-        <div ui-view="content"></div>
+        <div class="container">
+
+            <div ui-view="content"></div>
+
+        </div>
+
+        <div ui-view="footer"></div>
 
     </body>
     <script src="assets/js/vendor/jquery-3.1.1.js"></script>
@@ -22,6 +28,10 @@
     <script src="app/app.js"></script>
 
     <script src="app/layouts/header/header.controller.js"></script>
-    <script src="app/suscrito/suscrito.controller.js"></script>
+    <script src="app/layouts/footer/footer.controller.js"></script>
+    <script src="app/views/suscrito/suscrito.controller.js"></script>
+    <script src="app/views/buscar/buscar.controller.js"></script>
+    <script src="app/views/lista/lista.controller.js"></script>
+    <script src="app/views/datos/datos.controller.js"></script>
     <script src="app/home/home.controller.js"></script>
 </html>

@@ -3,5 +3,5 @@
  */
 app.controller('HomeController', ['$scope',
     function ($scope) {
-        $scope.titol = "Home Controller";
+        $scope.titlepage = "Mis listas";
     }]);
